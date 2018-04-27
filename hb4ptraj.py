@@ -34,7 +34,7 @@ with open('hbanalysis','w+') as f:
 	f.write("echo 'parm abc.top'>ptraj.in\n")
 	f.write("for i in `seq 1 1 $ntrj`\n")
 	f.write("do\n")
-	f.write("\techo 'trajin md$i.ncdf 1 last $step'>>ptraj.in\n")
+	f.write("\techo \"trajin md$i.ncdf 1 last $step\">>ptraj.in\n")
 	f.write("done\n")
 	f.write("echo 'strip :WAT'>>ptraj.in\n")
 	f.write("echo 'autoimage'>>ptraj.in\n")
