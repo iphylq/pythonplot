@@ -54,8 +54,8 @@ with open('hbanalysis','w+') as f:
 		capB = capB[0]
 		capBB = re.findall(r"_(.+)@",i[2])
 		capBB = capBB[0]
-		f.write('hbond '+capA[0]+i[0]+capAA+'-'+capB[0]+capBB+' acceptormask '+acceptor+\
-			' donorhmask  '+donorh+' donormask '+donor+' '+'series out '+\
+		f.write('hbond '+capA[0]+i[0]+capAA+'-'+capB[0]+capBB+' acceptormask '+':'+acceptor+\
+			' donorhmask  '+':'+donorh+' donormask '+':'+donor+' '+'series out '+\
 			'$hbmap.dat\n'
 			)
 	f.write('go\n')
