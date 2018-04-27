@@ -23,29 +23,23 @@ with open(datafile) as f:
 	pairs.pop(0)
 	pairs = sorted(set(pairs),key=pairs.index)
 	pairs.pop(0)
-	pairs = [pairs[i].strip(r'[UU]') for i in range(len(pairs))]
+	pairs = [pairs[i].rstrip(r'[UU]') for i in range(len(pairs))]
 
 if pairs[2] == 'G3-C10':
 	flag = 'wild'
 	colorseries = [1,2,3,4,4,5,6,6,4,3,3,2,2,1]
-	pairs[-1] = 'U' + pairs[-1]       # for 1zih and mut1 there will missing 'U'
 elif pairs[2] == 'C3O-G10':
 	flag = 'mut1'
 	colorseries = [1,2,3,3,4,5,6,6,4,3,2,2,1]
-	pairs[-1] = 'U' + pairs[-1]       # for 1zih and mut1 there will missing 'U'
 elif pairs[2] == 'A3-U10':
 	flag = 'mut2'
 	colorseries = [1,2,3,4,4,5,6,6,4,3,2,1,1]
-	pairs[1] = 'U' + pairs[1]       # for mut2 there will missing 'U'
-	pairs[9] = 'U' + pairs[9]
 elif pairs[2] == 'C3N-G12':
 	flag = '2koc'
 	colorseries = [1,2,3,3,4,5,5,6,6,6,6,5,4,3,2,2,1,1]
-#	pairs
 elif pairs[2] == 'U3O-A11':
 	flag = '1esh'
 	colorseries = [1,2,3,4,5,5,6,5,4,4,3,2,2,1,1]
-#	pairs
 # definitions for the axes
 left,width = 0.1,0.65
 bottom,height = 0.1,0.65
