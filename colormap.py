@@ -38,7 +38,14 @@ elif pairs[2] == 'A3-U10':
 	colorseries = [1,2,3,4,4,5,6,6,4,3,2,1,1]
 	pairs[1] = 'U' + pairs[1]       # for mut2 there will missing 'U'
 	pairs[9] = 'U' + pairs[9]
-
+elif pairs[2] == 'C3N-G12':
+	flag = '2koc'
+	colorseries = [1,2,3,3,4,5,5,6,6,6,6,5,4,3,2,2,1,1]
+#	pairs
+elif pairs[2] == 'U3O-A11':
+	flag = '1esh'
+	colorseries = [1,2,3,4,5,5,6,5,4,4,3,2,2,1,1]
+#	pairs
 # definitions for the axes
 left,width = 0.1,0.65
 bottom,height = 0.1,0.65
