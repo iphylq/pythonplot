@@ -40,6 +40,14 @@ elif pairs[2] == 'C3N-G12':
 elif pairs[2] == 'U3O-A11':
 	flag = '1esh'
 	colorseries = [1,2,3,4,5,5,6,5,4,4,3,2,2,1,1]
+elif pairs[2] == 'G20O-C1':
+	flag = 'Tte-3Q51'
+#	colorseries = [1,1,1,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,8,8,8,9,10]
+	colorseries = [1,1,1,2,2,3,3,3,4,4,4,5,5,5,6,6,6,1,2,2,2,3,4]
+#elif pairs[2] = '':
+#	flag = 'Bsu-2L1V'
+#	colorseries = []
+
 # definitions for the axes
 left,width = 0.1,0.65
 bottom,height = 0.1,0.65
@@ -68,6 +76,19 @@ data = np.array([data[i]*colorseries[i] for i in range(len(colorseries))])
 #		[0,1,1],
 #		[1,0,1],
 #		[1,1,0]]
+#colorset = [
+#	'white',
+#	'crimson',
+#	'forestgreen',
+#	'dodgerblue',
+#	'darkorchid',
+#	'turquoise',
+#	'orangered',
+#	'firebrick',
+#	'plum',
+#	'steelblue',
+#	'darksalmon'
+#]
 colorset = [
 	'white',
 	'crimson',
@@ -77,17 +98,9 @@ colorset = [
 	'turquoise',
 	'orangered'
 ]
-#colorset = [
-#	'white',
-#	'#6699CC',
-#	'#0099CC',
-#	'#ABCDEF',
-#	'#',
-#	'',
-#	''
-#]
 cmap = colors.ListedColormap(colorset)
 barcolor = [colorset[i] for i in colorseries]
+print barcolor
 # xticks setting
 timeunit = 'Time/ns'
 if xn < 500:
