@@ -51,6 +51,14 @@ elif pairs[2] == 'G20O-C1':
 			2,2,\
 			1,2,3,3,4,5,5,6,6,6,1,1
 ]
+elif pairs[2] == 'G4O-C23':
+	flag = 'Bsu-wild'
+	colorseries = [1,1,2,2,2,3,3,4,4,4,5,5,5,\
+			1,2,\
+			1,1,2,2,2,\
+			1,2,2,3,\
+			1,2,2,3,4,4,5,5,6
+]
 #elif pairs[2] = '':
 #	flag = 'Bsu-2L1V'
 #	colorseries = []
