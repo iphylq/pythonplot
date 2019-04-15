@@ -1,4 +1,13 @@
 #!/bin/env python
+######################################################
+#	File Name:	colormap.py
+#	
+# Description: hbond colormap for 1zih and its mutants
+#	and preQ1 and 1esh,2koc
+#	   Author: dqq - duan@hust.edu.cn
+#
+#     Updated: Mon 15 Apr 2019 12:00:06 PM CST
+######################################################
 
 import sys
 import string
@@ -7,7 +16,6 @@ import matplotlib as mpl
 from matplotlib import pyplot as plt
 from matplotlib import colors
 from matplotlib.ticker import NullFormatter
-
 nullfmt = NullFormatter()
 font = {'family':'serif','color':'k','weight':'normal','size':16,}
 # datafile and pic name, formated with png
@@ -80,6 +88,7 @@ bottom_h = left_h = left + width + 0.02
 rect_hbmap = [left, bottom, width, height]
 rect_barx = [left, bottom_h, width, 0.2]
 rect_bary = [left_h, bottom, 0.2, height]
+rect_Qtext = [left_h, bottom_h, 0.2, 0.2]
 
 # load data
 data = np.loadtxt(datafile,dtype='int')
@@ -141,7 +150,7 @@ elif xn < 3000:
 	xticks = np.linspace(0,(xn/600+1)*600,xn/600+2)
 else:
 	xticks = np.linspace(0,(xn/1000+1)*1000,xn/1000+2)
-	timeunit = 'Time/us'
+	timeunit = 'Time/$\us$'
 xtickslabel = np.delete(xticks,-1)
 xtickslabel = [int(i) for i in xtickslabel]
 xtickslabel.append('') 
@@ -152,6 +161,7 @@ axhbmap = plt.axes(rect_hbmap)
 #plt.title('HBond Profile')
 axbarx = plt.axes(rect_barx)
 axbary = plt.axes(rect_bary)
+axQtext = plt.axes(rect_Qtext)
 #plt.title('HBond Profile')
 axbarx.xaxis.set_major_formatter(nullfmt)
 axbary.yaxis.set_major_formatter(nullfmt)
@@ -159,13 +169,26 @@ axbary.yaxis.set_major_formatter(nullfmt)
 axhbmap.imshow(data,aspect='auto',interpolation='none',cmap=cmap)
 axbarx.bar(np.arange(xn),xbar,width=1.0,color='gray')
 axbary.barh(np.arange(pn),ybar/float(xn),height=1.0,color=barcolor[::-1])
+#axQtext.bar()
+if flag == 'wild' or flag == 'mut1' or flag == 'mut2':
+	ytbar = ybar[::-1]
+	Qtotal = np.sum(ytbar/float(xn))/float(pn)
+	Qtotal = str(round(Qtotal,2))
+	ystembar = np.delete(ytbar,[5,6,7])
+	Qstem = np.sum(ystembar/float(xn))/float(pn-3)
+	Qstem = str(round(Qstem,2))
+	Qloop = (ytbar[5] + ytbar[6] + ytbar[7])/float(xn)/3.0
+	Qloop = str(round(Qloop,2))
+	info = "Qtot = " + Qtotal + "\nQstem = " + Qstem + "\nQloop = " + Qloop
+	axQtext.text(0.25,0.3,info,bbox=dict(facecolor='cyan',alpha=0.6))
+	plt.axis('off')
 
 # axis and label
 axhbmap.set_yticks(np.linspace(0,pn-1,pn))
 axhbmap.set_yticklabels(pairs)
 axhbmap.set_xticks(xticks)
 axhbmap.set_xticklabels(xtickslabel)
-axhbmap.set_xlabel(timeunit,fontdict=font)
+axhbmap.set_xlabel(timeunit)
 
 axbarx.set_xlim([0,xn])
 axbarx.set_xticks(xticks)
