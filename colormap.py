@@ -6,7 +6,7 @@
 #	and preQ1 and 1esh,2koc
 #	   Author: dqq - duan@hust.edu.cn
 #
-#     Updated: Mon 15 Apr 2019 12:00:06 PM CST
+#     Updated: Mon 11 Nov 2019 11:08:15 AM CST
 ######################################################
 
 import sys
@@ -34,14 +34,24 @@ with open(datafile) as f:
 	pairs = [pairs[i].rstrip(r'[UU]') for i in range(len(pairs))]
 
 if pairs[2] == 'G3-C10':
-	flag = 'wild'
-	colorseries = [1,2,3,4,4,5,6,6,4,3,3,2,2,1]
+	if pairs[1] == 'U2O-A11':
+		flag = 'mut3'
+		colorseries = [1,2,3,4,4,5,6,6,4,3,3,2,1]
+	else:
+		flag = 'wild'
+		colorseries = [1,2,3,4,4,5,6,6,4,3,3,2,2,1]
 elif pairs[2] == 'C3O-G10':
 	flag = 'mut1'
 	colorseries = [1,2,3,3,4,5,6,6,4,3,2,2,1]
-elif pairs[2] == 'A3-U10':
+elif pairs[2] == 'A3N-U10':
 	flag = 'mut2'
 	colorseries = [1,2,3,4,4,5,6,6,4,3,2,1,1]
+elif pairs[2] == 'U3O-A10':
+	flag = 'mut4'
+	colorseries = [1,2,3,4,4,5,6,6,4,3,2,2,1]
+elif pairs[2] == 'A3N-U12':
+	flag = 'gc2au'
+	colorseries = [1,2,3,4,5,6,6,4,3,2,1]
 elif pairs[2] == 'C3N-G12':
 	flag = '2koc'
 	colorseries = [1,2,3,3,4,5,5,6,6,6,6,5,4,3,2,2,1,1]
